@@ -1,0 +1,49 @@
+ <!DOCTYPE html> <html ng-app="app">
+    <head>      
+		<link rel="stylesheet" type="text/css" href="../libs/bootstrap/3.0.0/css/bootstrap.css">
+      <link rel="stylesheet" href="../libs/css/font-awesome.css" />
+	  <script src="../libs/angular/1.2.20/angular.min.js"></script>
+      <!--<script type="text/javascript" src="../libs/jquery/jquery-1.10.2.min.js"></script> -->
+	  
+          <script src="../libs/angular/1.2.20/angular-route.min.js"></script>		  
+      <script src="app.js"></script>
+	  <script src="controller.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+	  
+    </head>
+	
+	<style>
+table, td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+</style>
+    <!-- define angular controller -->
+    <body ng-controller="mainController">
+	<header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Request Logging Application</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="#requestlist"><i class="fa fa-shield"></i> Request List</a></li>
+					<li><a href="#requestview"><i class="fa fa-shield"></i> View Request</a></li>
+					
+					<!--
+					<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                    <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li> -->
+					
+                </ul>
+            </div>
+            </nav>
+        </header>	
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+       <div ng-view></div>
+    </div>
+	</body>
+	</html>

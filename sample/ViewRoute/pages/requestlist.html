@@ -1,0 +1,17 @@
+<div class="jumbotron text-center">
+ <p>req:{{requests}}</p>
+
+ <table>
+  <tr ng-repeat="x in requests" border="1">
+ 
+    <td ng-if="$odd" style="background-color:#f1f1f1">
+    {{ x.requesterName }}</td>
+    <td ng-if="$even">
+    {{ x.requesterName }}</td>
+    <td ng-if="$odd" style="background-color:#f1f1f1">
+    {{ x.approversName }}</td>
+    <td ng-if="$even">
+    {{ x.approversName}}</td>
+  </tr>
+</table>
+</div>
