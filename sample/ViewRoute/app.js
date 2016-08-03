@@ -14,12 +14,12 @@
            
             .when('/requestlist', { // route for the about page
                 templateUrl : 'pages/requestlist.html',
-                controller  : 'requestviewController'
+                controller  : 'requestlistController'
             })
 			
 			.when('/requestview', { // route for the about page
                 templateUrl : 'pages/requestview.html',
-                controller  : 'requestlistController'
+                controller  : 'requestviewController'
             })
 
             
