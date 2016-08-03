@@ -5,28 +5,11 @@
 
 <!-- Form Name -->
 <legend>CDS Data Request Form</legend>
- <br>
- <hr>
- <table>
-  <tr ng-repeat="x in requests" border="1">
- 
-    <td ng-if="$odd" style="background-color:#f1f1f1">
-    {{ x.requesterName }}</td>
-    <td ng-if="$even">
-    {{ x.requesterName }}</td>
-    <td ng-if="$odd" style="background-color:#f1f1f1">
-    {{ x.approversName }}</td>
-    <td ng-if="$even">
-    {{ x.approversName}}</td>
-  </tr>
-</table>
-
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="requesterName">Requester Name/Email :</label>  
   <div class="col-md-4">
-  <input id="requesterName" ng-model="requesterName" name="txtrequesterName" type="text" placeholder="Requester Name /Email" class="form-control input-md" required="">
+  <input id="requesterName" ng-model="requesterName" name="txtrequesterName" type="text" placeholder="Requester Name /Email" class="form-control input-md" required=""></input>
     
   </div>
 </div>
@@ -35,7 +18,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="approversName">Approvers Name/E-mail</label>  
   <div class="col-md-4">
-  <input id="approversName" ng-model="approversName" name="approversName" type="text" placeholder="Approvers Name /E-mail" class="form-control input-md" required="">
+  <input id="approversName" ng-model="approversName" name="approversName" type="text" placeholder="Approvers Name /E-mail" class="form-control input-md" required=""> </input>
     
   </div>
 </div>
@@ -44,7 +27,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="requestersTeamName">Requester Team Name/E-mail</label>  
   <div class="col-md-4">
-  <input id="requestersTeamName" ng-model="requestersTeamName" name="requestersTeamName" type="text" placeholder="Requester Team Name/E-mail" class="form-control input-md" required="">
+  <input id="requestersTeamName" ng-model="requestersTeamName" name="requestersTeamName" type="text" placeholder="Requester Team Name/E-mail" class="form-control input-md" required=""></input>
     
   </div>
 </div>

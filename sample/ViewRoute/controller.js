@@ -18,7 +18,7 @@
 		 $scope.message = 'Look! I am an requestviewController 222 page.';
 		 $scope.data = "test";
 		$scope.requests=[];		
-		$http.get("http://localhost:8080/GetRequests")
+		$http.get("http://localhost:8089/Requests")
     .then(function (response) {
 		$scope.requests = JSON.stringify(response.data.requests);
 		
@@ -45,15 +45,18 @@
         
             var config = {
                 headers : {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+					'Access-Control-Allow-Origin':'*'
+					
                 }
             }
 $scope.message = "sending";
-            $http.post('http://localhost:8080/addRequest', data, config)
+            $http.post('http://localhost:8089/addRequest', data, config)
             .success(function (data, status, headers, config) {
                 $scope.message = "data is posted sucess fully";
             })
             .error(function (data, status, header, config) {
+				
                    $scope.message = "data is  not posted sucess fully";
             });
         };
