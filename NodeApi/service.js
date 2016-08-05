@@ -5,16 +5,37 @@ var bodyParser     =        require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,cache-control");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  
+  console.log('In Use');
+  next();
+  
+});
+
+app.get('/', function(req, res, next) {
+    //..set headers etc.
+console.log('In default get');
+    
+});
+app.post('/', function(req, res, next) {
+console.log('In post');
+});
 
 
-app.get('/requests', function (req, res) {
+app.get('/requests', function (req, res,next) {
+	console.log("get req ");
    fs.readFile( __dirname + "/" + "requests.json", 'utf8', function (err, data) {
        console.log( data );
-	    res.setHeader('Access-Control-Allow-Origin', '*');
+//	    res.setHeader('Access-Control-Allow-Origin', '*');
        res.end( data );
    });
+   
 })
-app.post('/addRequest', function (req, res) {
+
+app.post('/addRequest', function (req, res,next) {
    console.log('addRequest');
    //var request=req.body;
    console.log(req.body);
@@ -23,11 +44,11 @@ app.post('/addRequest', function (req, res) {
        data = JSON.parse(data);
 	   //data=req.body;
 	   //console.log('request 0');
-	   console.log(JSON.stringify(data.requests));
-	   console.log('body 0');
-	   console.log(JSON.stringify(req.body))   
-	   console.log('data.requests.length');
-	   console.log(data.requests.length); 
+	   //console.log(JSON.stringify(data.requests));
+	   //console.log('body 0');
+	   //console.log(JSON.stringify(req.body))   
+	   //console.log('data.requests.length');
+	   //console.log(data.requests.length); 
 	   data.requests[data.requests.length]=req.body;
 
    console.log('updated request 0');
@@ -47,15 +68,12 @@ app.post('/addRequest', function (req, res) {
 					"StatusCode":'200',
 					"ErrorMessage" : ''
 			};
-			   res.setHeader("Access-Control-Allow-Origin", "*");
-			    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
        res.end(JSON.stringify(statusJson));
 	   
    });
 })
 
-var server = app.listen(8089, function () {
+var server = app.listen(8088, function () {
   var host = server.address().address
   var port = server.address().port
   console.log("Example app listening at http://%s:%s", host, port)

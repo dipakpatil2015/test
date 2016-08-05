@@ -18,7 +18,7 @@
 		 $scope.message = 'Look! I am an requestviewController 222 page.';
 		 $scope.data = "test";
 		$scope.requests=[];		
-		$http.get("http://localhost:8089/Requests")
+		$http.get("http://localhost:8088/Requests")
     .then(function (response) {
 		$scope.requests = JSON.stringify(response.data.requests);
 		
@@ -37,21 +37,23 @@
 };
 
 
- $scope.SendData = function () {
-           // use $.param jQuery function to serialize data from JSON 
-		   $scope.message = "called ";
-		   var req={ 'requesterName':$scope.requesterName, 'approversName': $scope.approversName, 'requesterTeamName':$scope.requesterTeamName, 'domain':$scope.domain, 'requestDescription':$scope.requestDescription};
-            var data = req;
+		$scope.SendData = function () {
+		    // use $.param jQuery function to serialize data from JSON 
+		    $scope.message = "called ";
+		    var req = { 'requesterName': $scope.requesterName, 'approversName': $scope.approversName, 'requestersTeamName': $scope.requestersTeamName, 'domain': $scope.domain, 'requestDescription': $scope.requestDescription };
+		    var data = req;
         
-            var config = {
-                headers : {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-					'Access-Control-Allow-Origin':'*'
-					
-                }
+		    var config = {
+		        headers : {
+		            //'Content-Type': 'application/x-www-form-urlencoded',
+		            //'Access-Control-Allow-Origin':'*'
+		            'cache-control': 'no-cache',
+		            'content-type': 'application/json'
+		        },
+		        json:true
             }
 $scope.message = "sending";
-            $http.post('http://localhost:8089/addRequest', data, config)
+     $http.post('http://localhost:8088/addRequest', data, config)
             .success(function (data, status, headers, config) {
                 $scope.message = "data is posted sucess fully";
             })
@@ -76,7 +78,7 @@ $scope.message = "sending";
 	app.controller('requestlistController', function($scope,$http) {
 		$scope.data = "test";
 		$scope.requests=[];		
-		$http.get("http://localhost:8089/requests")
+		$http.get("http://localhost:8088/requests")
 		.then(function (response) {
 		$scope.requests = response.data.requests;
 		},function (err) {
